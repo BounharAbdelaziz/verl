@@ -1109,7 +1109,7 @@ def compute_policy_loss_sapo(
     
     def gate_function(x, tau):
         """ The gating function used in SAPO """
-        return torch.sigmoid(tau * (x - 1.0)) * (4.0 / tau)
+        return torch.sigmoid(tau * (x - 1.0)) * (4.0 / (tau + 1e-8))
         
     # compute IS at token level:
     # r_{i,t}(θ) = π_θ(y_{i,t}|x, y_{i,<t}) / π_θold(y_{i,t}|x, y_{i,<t})]
